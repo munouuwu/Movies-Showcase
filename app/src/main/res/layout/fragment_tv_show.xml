@@ -6,10 +6,11 @@
     tools:context=".fragment.TvShowFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_infos"
+        android:id="@+id/rv_tv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
+        android:paddingBottom="48dp"
+        android:clipToPadding="false"
         tools:listitem="@layout/list_data" />
-
 </FrameLayout>

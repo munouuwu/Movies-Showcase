@@ -16,8 +16,22 @@ object DataMovies {
                 "2019",
                 "2h 2m",
                 "English",
-                72,
+                "72%",
                 R.drawable.poster_alita
+            )
+        )
+
+        list.add(
+            Data(
+                "MV_6",
+                "A Star is Born",
+                "Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even as Ally's career takes off, the personal side of their relationship is breaking down, as Jack fights an ongoing battle with his own internal demons.",
+                "Drama, Romance, Music",
+                "2018",
+                "2h 16m",
+                "English",
+                "75%",
+                R.drawable.poster_a_start_is_born
             )
         )
 
@@ -30,8 +44,22 @@ object DataMovies {
                 "2018",
                 "2h 15m",
                 "English",
-                80,
+                "80%",
                 R.drawable.poster_bohemian
+            )
+        )
+
+        list.add(
+            Data(
+                "MV_7",
+                "Cold Pursuit",
+                "The quiet family life of Nels Coxman, a snowplow driver, is upended after his son's murder. Nels begins a vengeful hunt for Viking, the drug lord he holds responsible for the killing, eliminating Viking's associates one by one. As Nels draws closer to Viking, his actions bring even more unexpected and violent consequences, as he proves that revenge is all in the execution.",
+                "Action, Crime, Thriller",
+                "2019",
+                "1h 59m",
+                "English",
+                "57%",
+                R.drawable.poster_cold_persuit
             )
         )
 
@@ -44,8 +72,22 @@ object DataMovies {
                 "2018",
                 "2h 14m",
                 "English",
-                69,
+                "69%",
                 R.drawable.poster_crimes
+            )
+        )
+
+        list.add(
+            Data(
+                "MV_8",
+                "Glass",
+                "In a series of escalating encounters, former security guard David Dunn uses his supernatural abilities to track Kevin Wendell Crumb, a disturbed man who has twenty-four personalities. Meanwhile, the shadowy presence of Elijah Price emerges as an orchestrator who holds secrets critical to both men.",
+                "Thriller, Drama, Science Fiction",
+                "2019",
+                "2h 9m",
+                "English",
+                "67%",
+                R.drawable.poster_glass
             )
         )
 
@@ -58,8 +100,22 @@ object DataMovies {
                 "2019",
                 "1h 44m",
                 "English",
-                78,
+                "78%",
                 R.drawable.poster_how_to_train
+            )
+        )
+
+        list.add(
+            Data(
+                "MV_9",
+                "Mary Queen of Scots",
+                "In 1561, Mary Stuart, widow of the King of France, returns to Scotland, reclaims her rightful throne and menaces the future of Queen Elizabeth I as ruler of England, because she has a legitimate claim to the English throne. Betrayals, rebellions, conspiracies and their own life choices imperil both Queens. They experience the bitter cost of power, until their tragic fate is finally fulfilled.",
+                "Drama, History",
+                "2018",
+                "2h 4m",
+                "English",
+                "66%",
+                R.drawable.poster_marry_queen
             )
         )
 
@@ -72,8 +128,22 @@ object DataMovies {
                 "2018",
                 "1h 50m",
                 "English",
-                67,
+                "67%",
                 R.drawable.poster_overlord
+            )
+        )
+
+        list.add(
+            Data(
+                "MV_10",
+                "Ralph Breaks The Internet",
+                "Video game bad guy Ralph and fellow misfit Vanellope von Schweetz must risk it all by traveling to the World Wide Web in search of a replacement part to save Vanellope's video game, Sugar Rush. In way over their heads, Ralph and Vanellope rely on the citizens of the internet — the netizens — to help navigate their way, including an entrepreneur named Yesss, who is the head algorithm and the heart and soul of trend-making site BuzzzTube.",
+                "Family, Animation, Comedy, Adventure",
+                "2018",
+                "1h 52m",
+                "English",
+                "72%",
+                R.drawable.poster_ralph
             )
         )
 
@@ -92,8 +162,22 @@ object DataMovies {
                 "2012",
                 "42m x 170 Episodes",
                 "English",
-                66,
+                "66%",
                 R.drawable.poster_arrow
+            )
+        )
+
+        list.add(
+            Data(
+                "TV_6",
+                "Doom Patrol",
+                "The Doom Patrol’s members each suffered horrible accidents that gave them superhuman abilities — but also left them scarred and disfigured. Traumatized and downtrodden, the team found purpose through The Chief, who brought them together to investigate the weirdest phenomena in existence — and to protect Earth from what they find.",
+                "Sci-Fi & Fantasy, Comedy, Drama",
+                "2019",
+                "49m x 24 Episodes",
+                "English",
+                "76%",
+                R.drawable.poster_doom_patrol
             )
         )
 
@@ -106,8 +190,22 @@ object DataMovies {
                 "1986",
                 "25m x 153 Episodes",
                 "Japanese",
-                81,
+                "81%",
                 R.drawable.poster_dragon_ball
+            )
+        )
+
+        list.add(
+            Data(
+                "TV_7",
+                "Fairy Tail",
+                "Lucy is a 17-year-old girl, who wants to be a full-fledged mage. One day when visiting Harujion Town, she meets Natsu, a young man who gets sick easily by any type of transportation. But Natsu isn't just any ordinary kid, he's a member of one of the world's most infamous mage guilds: Fairy Tail.",
+                "Action & Adventure, Animation, Comedy, Sci-Fi & Fantasy, Mystery",
+                "2009",
+                "25m x 328 Episodes",
+                "Japanese",
+                "78%",
+                R.drawable.poster_fairytail
             )
         )
 
@@ -120,7 +218,7 @@ object DataMovies {
                 "2011",
                 "1h x 73 Episodes",
                 "English",
-                84,
+                "84%",
                 R.drawable.poster_god
             )
         )
@@ -134,8 +232,50 @@ object DataMovies {
                 "2019",
                 "50m x 16 Episodes",
                 "English",
-                75,
+                "75%",
                 R.drawable.poster_hanna
+            )
+        )
+
+        list.add(
+            Data(
+                "TV_8",
+                "Marvel's Iron Fist",
+                "Danny Rand resurfaces 15 years after being presumed dead. Now, with the power of the Iron Fist, he seeks to reclaim his past and fulfill his destiny.",
+                "Action & Adventure, Drama, Sci-Fi & Fantasy",
+                "2017",
+                "55m x 23 Episodes",
+                "English",
+                "66%",
+                R.drawable.poster_iron_fist
+            )
+        )
+
+        list.add(
+            Data(
+                "TV_9",
+                "Riverdale",
+                "Set in the present, the series offers a bold, subversive take on Archie, Betty, Veronica and their friends, exploring the surreality of small-town life, the darkness and weirdness bubbling beneath Riverdale’s wholesome facade.",
+                "Mystery, Drama, Crime",
+                "2017",
+                "45m x 87 Episodes",
+                "English",
+                "86%",
+                R.drawable.poster_riverdale
+            )
+        )
+
+        list.add(
+            Data(
+                "TV_10",
+                "The Simpsons",
+                "Set in Springfield, the average American town, the show focuses on the antics and everyday adventures of the Simpson family; Homer, Marge, Bart, Lisa and Maggie, as well as a virtual cast of thousands. Since the beginning, the series has been a pop culture icon, attracting hundreds of celebrities to guest star. The show has also made name for itself in its fearless satirical take on politics, media and American life in general.",
+                "Family, Animation, Comedy\n",
+                "1989",
+                "22m x 704 Episodes",
+                "English",
+                "78%",
+                R.drawable.poster_the_simpson
             )
         )
 
@@ -148,7 +288,7 @@ object DataMovies {
                 "2012",
                 "42m x 153 Episodes",
                 "English",
-                81,
+                "81%",
                 R.drawable.poster_the_walking_dead
             )
         )

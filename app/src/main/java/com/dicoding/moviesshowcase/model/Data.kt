@@ -12,6 +12,6 @@ data class Data (
     var release: String,
     var duration: String,
     var language: String,
-    var rating: Int,
+    var rating: String,
     var imgPoster: Int
 ) : Parcelable

@@ -6,28 +6,41 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import com.dicoding.moviesshowcase.R
 import com.dicoding.moviesshowcase.activity.DetailActivity
 import com.dicoding.moviesshowcase.adapter.ListDataAdapter
 import com.dicoding.moviesshowcase.model.Data
+import com.dicoding.moviesshowcase.model.ListDataViewModel
+import com.dicoding.moviesshowcase.repo.Helper.TYPE_TV
 import kotlinx.android.synthetic.main.fragment_tv_show.*
 
 class TvShowFragment : Fragment() {
-    private var list: ArrayList<Data> = arrayListOf()
+    private lateinit var viewModel: ListDataViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_tv_show, container, false)
     }
 
-    private fun showRecyclerList() {
-        rv_infos.layoutManager = LinearLayoutManager(activity)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        activity?.let {
+            viewModel = ViewModelProvider(it, ViewModelProvider.NewInstanceFactory())[ListDataViewModel::class.java]
+        }
+
+        val list = viewModel.getTvs()
+        showRecyclerList(list)
+    }
+
+    private fun showRecyclerList(list: List<Data>) {
+        rv_tv.layoutManager = GridLayoutManager(context, 2)
         val listDataAdapter = ListDataAdapter(list)
-        rv_infos.adapter = listDataAdapter
+        rv_tv.adapter = listDataAdapter
 
         listDataAdapter.setOnItemClickCallback(object : ListDataAdapter.OnItemClickCallback {
             override fun onItemClicked(data: Data) {
@@ -37,8 +50,9 @@ class TvShowFragment : Fragment() {
     }
 
     private fun showSelectedInfo(data: Data) {
-        val detailActivity = Intent(activity, DetailActivity::class.java)
-        detailActivity.putExtra(DetailActivity.EXTRA_USER, data)
+        val detailActivity = Intent(context, DetailActivity::class.java)
+        detailActivity.putExtra(DetailActivity.EXTRA_ID, data.id)
+        detailActivity.putExtra(DetailActivity.EXTRA_TYPE, TYPE_TV)
         startActivity(detailActivity)
     }
 }
