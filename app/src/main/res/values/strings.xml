@@ -3,7 +3,7 @@
     <string name="movies_tab">Movies</string>
     <string name="tvshow_tab">TV Shows</string>
     <string name="cover_placeholder">cover</string>
-    <string name="title_placeholder">title</string>
+    <string name="title_placeholder">title title title title title title title title title</string>
     <string name="release_placeholder">release</string>
     <string name="overview_placeholder">lorem ipsum dolor sit amet</string>
     <string name="genre_placeholder">genre</string>
@@ -11,7 +11,7 @@
     <string name="language_placeholder">language</string>
     <string name="rating_placeholder">rating</string>
     <string name="title_header">Title</string>
-    <string name="release_header">Release Year</string>
+    <string name="release_header">Release Date</string>
     <string name="language_header">Language</string>
     <string name="rating_header">Rating</string>
 </resources>

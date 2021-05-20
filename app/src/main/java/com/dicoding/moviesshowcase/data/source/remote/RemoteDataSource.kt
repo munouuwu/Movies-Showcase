@@ -1,6 +1,10 @@
 package com.dicoding.moviesshowcase.data.source.remote
 
+import com.dicoding.moviesshowcase.data.source.remote.api.ApiConfig
+import com.dicoding.moviesshowcase.data.source.remote.response.MvResponse
+import com.dicoding.moviesshowcase.data.source.remote.response.TvResponse
 import com.dicoding.moviesshowcase.repo.EspressoIdlingResource
+import retrofit2.await
 
 class RemoteDataSource {
     companion object {
@@ -13,12 +17,61 @@ class RemoteDataSource {
             }
     }
 
-    fun getListMv(callback: LoadListMvCallback){
+    suspend fun getTopRatedMv(
+        callback: LoadNowPlayingMoviesCallback
+    ) {
         EspressoIdlingResource.increment()
-        ApiClient.instance.
+        ApiConfig.instance.getListMv().await().results?.let { listMovie ->
+            callback.onAllMoviesReceived(
+                listMovie
+            )
+            EspressoIdlingResource.decrement()
+        }
     }
 
-    fun getModules(courseId: String): List<ModuleResponse> = jsonHelper.loadModule(courseId)
+    suspend fun getDetailMv(movieId: Int, callback: LoadMovieDetailCallback) {
+        EspressoIdlingResource.increment()
+        ApiConfig.instance.getDetailMv(movieId).await().let { movie ->
+            callback.onMovieDetailReceived(
+                movie
+            )
+            EspressoIdlingResource.decrement()
+        }
+    }
 
-    fun getContent(moduleId: String): ContentResponse = jsonHelper.loadContent(moduleId)
+    suspend fun getTopRatedTv(callback: LoadOnTheAirTvShowCallback) {
+        EspressoIdlingResource.increment()
+        ApiConfig.instance.getListTv().await().results?.let { listTvShow ->
+            callback.onAllTvShowsReceived(
+                listTvShow
+            )
+            EspressoIdlingResource.decrement()
+        }
+    }
+
+    suspend fun getDetailTv(tvShowId: Int, callback: LoadTvShowDetailCallback) {
+        EspressoIdlingResource.increment()
+        ApiConfig.instance.getDetailTv(tvShowId).await().let { tvShow ->
+            callback.onTvShowDetailReceived(
+                tvShow
+            )
+            EspressoIdlingResource.decrement()
+        }
+    }
+
+    interface LoadNowPlayingMoviesCallback {
+        fun onAllMoviesReceived(response: List<MvResponse>)
+    }
+
+    interface LoadMovieDetailCallback {
+        fun onMovieDetailReceived(response: MvResponse)
+    }
+
+    interface LoadOnTheAirTvShowCallback {
+        fun onAllTvShowsReceived(response: List<TvResponse>)
+    }
+
+    interface LoadTvShowDetailCallback {
+        fun onTvShowDetailReceived(response: TvResponse)
+    }
 }

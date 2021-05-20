@@ -33,8 +33,9 @@ class TvShowFragment : Fragment() {
             viewModel = ViewModelProvider(it, ViewModelProvider.NewInstanceFactory())[ListDataViewModel::class.java]
         }
 
-        val list = viewModel.getTvs()
-        showRecyclerList(list)
+        viewModel.getTvs().observe(viewLifecycleOwner, { data ->
+            showRecyclerList(data)
+        })
     }
 
     private fun showRecyclerList(list: List<Data>) {

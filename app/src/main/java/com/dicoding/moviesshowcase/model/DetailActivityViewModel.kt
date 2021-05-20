@@ -1,33 +1,31 @@
 package com.dicoding.moviesshowcase.model
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.dicoding.moviesshowcase.data.Data
-import com.dicoding.moviesshowcase.repo.DataMovies
+import com.dicoding.moviesshowcase.data.source.ItemRepository
+import com.dicoding.moviesshowcase.data.source.remote.RemoteDataSource
 
 class DetailActivityViewModel : ViewModel() {
-    private lateinit var mvId : String
-    private lateinit var tvId : String
+    private var itemRepository = ItemRepository.getInstance(remoteDataSource = RemoteDataSource.getInstance())
 
-    private fun getMovies() : ArrayList<Data> = DataMovies.listDataMovies() as ArrayList<Data>
-    private fun getTvs() : ArrayList<Data> = DataMovies.listDataTvs() as ArrayList<Data>
+    private var mvId : Int = 0
+    private var tvId : Int = 0
 
-    fun setSelectedMv(mvId: String) {
+    fun getMvById() : LiveData<Data> = itemRepository.getDetailMv(mvId)
+    fun getTvById() : LiveData<Data> = itemRepository.getDetailTv(tvId)
+
+    fun setSelectedMv(mvId: Int) {
         this.mvId = mvId
     }
 
-    fun setSelectedTv(tvId: String) {
+    fun setSelectedTv(tvId: Int) {
         this.tvId = tvId
     }
-
+/*
     fun getMvById(): Data {
         lateinit var result: Data
         val listMovie = getMovies()
-        for (mv in listMovie) {
-            if (mv.id == mvId) {
-                result = mv
-                break
-            }
-        }
         return  result
     }
 
@@ -41,5 +39,5 @@ class DetailActivityViewModel : ViewModel() {
             }
         }
         return result
-    }
+    }*/
 }

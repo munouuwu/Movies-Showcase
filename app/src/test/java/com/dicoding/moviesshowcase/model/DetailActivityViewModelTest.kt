@@ -1,15 +1,18 @@
 package com.dicoding.moviesshowcase.model
 
-import com.dicoding.moviesshowcase.activity.DetailActivity
+import com.dicoding.moviesshowcase.data.source.ItemRepository
+import com.dicoding.moviesshowcase.data.source.remote.RemoteDataSource
 import com.dicoding.moviesshowcase.repo.DataMovies
 import junit.framework.TestCase
 import org.junit.Before
 import org.junit.Test
 
 class DetailActivityViewModelTest : TestCase() {
+    private var itemRepository = ItemRepository.getInstance(remoteDataSource = RemoteDataSource.getInstance())
+
     private lateinit var detailActivityViewModel: DetailActivityViewModel
-    private val mvData = DataMovies.listDataMovies()[0]
-    private val tvData = DataMovies.listDataTvs()[0]
+    private val mvData = itemRepository.getDetailMv()[0]
+    private val tvData = itemRepository.getDetailTv()[0]
     private val mvId = mvData.id
     private val tvId = tvData.id
 

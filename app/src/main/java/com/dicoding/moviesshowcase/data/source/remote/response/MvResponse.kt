@@ -5,13 +5,13 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class MvResponse (
-    var id: String,
+    var id: Int,
     var title: String,
     var overview: String,
-    var genre: String,
-    var release: String,
-    var duration: String,
-    var language: String,
-    var rating: String,
-    var imgPoster: Int
+    var release_date: String,
+    var runtime: Int,
+    var genres: List<GenreResponse>,
+    var original_language: String,
+    var vote_average: Double,
+    var poster_path: String
 ) : Parcelable

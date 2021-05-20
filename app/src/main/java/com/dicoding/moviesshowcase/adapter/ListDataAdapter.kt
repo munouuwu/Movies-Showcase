@@ -24,7 +24,7 @@ class ListDataAdapter(private val list: List<Data>) : RecyclerView.Adapter<ListD
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val data = list [position]
         Glide.with(holder.itemView.context)
-            .load(data.imgPoster)
+            .load("https://image.tmdb.org/t/p/w500/${data.imgPoster}")
             .into(holder.poster)
         holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(list[holder.adapterPosition]) }
     }

@@ -33,8 +33,9 @@ class MoviesFragment : Fragment() {
             viewModel = ViewModelProvider(it, ViewModelProvider.NewInstanceFactory())[ListDataViewModel::class.java]
         }
 
-        val list = viewModel.getMovies()
-        showRecyclerList(list)
+        viewModel.getMovies().observe(viewLifecycleOwner, { data ->
+            showRecyclerList(data)
+        })
     }
 
     private fun showRecyclerList(list: List<Data>) {
