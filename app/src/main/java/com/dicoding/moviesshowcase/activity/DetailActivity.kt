@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.dicoding.moviesshowcase.R
 import com.dicoding.moviesshowcase.databinding.ActivityDetailBinding
-import com.dicoding.moviesshowcase.model.Data
+import com.dicoding.moviesshowcase.data.Data
 import com.dicoding.moviesshowcase.model.DetailActivityViewModel
 import com.dicoding.moviesshowcase.repo.Helper.TYPE_MV
 import com.dicoding.moviesshowcase.repo.Helper.TYPE_TV

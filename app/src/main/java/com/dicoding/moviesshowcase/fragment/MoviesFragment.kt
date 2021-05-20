@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.dicoding.moviesshowcase.R
 import com.dicoding.moviesshowcase.activity.DetailActivity
 import com.dicoding.moviesshowcase.adapter.ListDataAdapter
-import com.dicoding.moviesshowcase.model.Data
+import com.dicoding.moviesshowcase.data.Data
 import com.dicoding.moviesshowcase.model.ListDataViewModel
 import com.dicoding.moviesshowcase.repo.Helper.TYPE_MV
 import kotlinx.android.synthetic.main.fragment_movies.*

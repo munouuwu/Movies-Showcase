@@ -14,6 +14,8 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        buildConfigField("String", "API_KEY", "1881d8497186d8ca3316f3829d00c9b5")
+        buildConfigField("String", "REQUEST_API", "https://api.themoviedb.org/3/")
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -48,6 +50,12 @@ dependencies {
     implementation 'com.synnapps:carouselview:0.1.5'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.test.espresso:espresso-idling-resource:3.3.0"
+    implementation "com.squareup.okhttp3:okhttp:4.4.0"
+    implementation "com.squareup.okhttp3:okhttp-urlconnection:4.4.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.4.0"
+    implementation "com.squareup.retrofit2:retrofit:2.7.1"
+    implementation "com.squareup.retrofit2:converter-gson:2.7.1"
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

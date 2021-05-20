@@ -1,6 +1,7 @@
 package com.dicoding.moviesshowcase.model
 
 import androidx.lifecycle.ViewModel
+import com.dicoding.moviesshowcase.data.Data
 import com.dicoding.moviesshowcase.repo.DataMovies
 
 class ListDataViewModel : ViewModel() {

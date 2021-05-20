@@ -1,10 +1,10 @@
-package com.dicoding.moviesshowcase.model
+package com.dicoding.moviesshowcase.data.source.remote.response
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Data (
+data class TvResponse (
     var id: String,
     var title: String,
     var overview: String,

@@ -7,7 +7,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dicoding.moviesshowcase.R
-import com.dicoding.moviesshowcase.model.Data
+import com.dicoding.moviesshowcase.data.Data
 
 class ListDataAdapter(private val list: List<Data>) : RecyclerView.Adapter<ListDataAdapter.ListViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback

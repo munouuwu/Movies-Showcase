@@ -2,12 +2,10 @@ package com.dicoding.moviesshowcase.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.dicoding.moviesshowcase.R
 import com.dicoding.moviesshowcase.adapter.SectionsPagerAdapter
 import com.dicoding.moviesshowcase.databinding.ActivityMainBinding
-import com.dicoding.moviesshowcase.model.Data
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 

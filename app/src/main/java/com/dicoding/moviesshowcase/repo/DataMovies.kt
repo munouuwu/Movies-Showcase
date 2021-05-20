@@ -1,7 +1,7 @@
 package com.dicoding.moviesshowcase.repo
 
 import com.dicoding.moviesshowcase.R
-import com.dicoding.moviesshowcase.model.Data
+import com.dicoding.moviesshowcase.data.Data
 
 object DataMovies {
     fun listDataMovies(): List<Data> {
