@@ -7,23 +7,14 @@ import com.dicoding.moviesshowcase.data.source.remote.RemoteDataSource
 import com.dicoding.moviesshowcase.data.source.remote.response.MvResponse
 import com.dicoding.moviesshowcase.data.source.remote.response.TvResponse
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ItemRepository private constructor(private val remoteDataSource: RemoteDataSource) : ItemDataSource {
-    companion object {
-        @Volatile
-        private var instance: ItemRepository? = null
-
-        fun getInstance(remoteDataSource: RemoteDataSource): ItemRepository =
-            instance ?: synchronized(this) {
-                instance ?: ItemRepository(remoteDataSource)
-            }
-    }
+class FakeItemRepository constructor(val remoteDataSource: RemoteDataSource) : ItemDataSource {
 
     override fun getTopRatedMv(): LiveData<List<Data>> {
         val result = MutableLiveData<List<Data>>()
-        CoroutineScope(IO).launch {
+        CoroutineScope(Dispatchers.IO).launch {
             remoteDataSource.getTopRatedMv(object : RemoteDataSource.LoadTopRatedMvCallback{
                 override fun onMvListReceived(response: List<MvResponse>) {
                     val list = ArrayList<Data>()
@@ -53,7 +44,7 @@ class ItemRepository private constructor(private val remoteDataSource: RemoteDat
 
     override fun getDetailMv(id: Int): LiveData<Data> {
         val result = MutableLiveData<Data>()
-        CoroutineScope(IO).launch {
+        CoroutineScope(Dispatchers.IO).launch {
             remoteDataSource.getDetailMv(id, object : RemoteDataSource.LoadDetailMvCallback{
                 override fun onMvDetailReceived(response: MvResponse) {
                     var genreString = ""
@@ -93,7 +84,7 @@ class ItemRepository private constructor(private val remoteDataSource: RemoteDat
 
     override fun getTopRatedTv(): LiveData<List<Data>> {
         val result = MutableLiveData<List<Data>>()
-        CoroutineScope(IO).launch {
+        CoroutineScope(Dispatchers.IO).launch {
             remoteDataSource.getTopRatedTv(object : RemoteDataSource.LoadTopRatedTvCallback{
                 override fun onTvListReceived(response: List<TvResponse>) {
                     val list = ArrayList<Data>()
@@ -124,7 +115,7 @@ class ItemRepository private constructor(private val remoteDataSource: RemoteDat
 
     override fun getDetailTv(id: Int): LiveData<Data> {
         val result = MutableLiveData<Data>()
-        CoroutineScope(IO).launch {
+        CoroutineScope(Dispatchers.IO).launch {
             remoteDataSource.getDetailTv(id, object : RemoteDataSource.LoadDetailTvCallback{
                 override fun onTvDetailReceived(response: TvResponse) {
                     var genreString = ""

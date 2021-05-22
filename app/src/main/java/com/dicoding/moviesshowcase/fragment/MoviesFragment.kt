@@ -13,6 +13,7 @@ import com.dicoding.moviesshowcase.activity.DetailActivity
 import com.dicoding.moviesshowcase.adapter.ListDataAdapter
 import com.dicoding.moviesshowcase.data.Data
 import com.dicoding.moviesshowcase.model.ListDataViewModel
+import com.dicoding.moviesshowcase.model.ViewModelFactory
 import com.dicoding.moviesshowcase.repo.Helper.TYPE_MV
 import kotlinx.android.synthetic.main.fragment_movies.*
 
@@ -29,8 +30,10 @@ class MoviesFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        val factory = ViewModelFactory.getInstance(requireActivity())
+
         activity?.let {
-            viewModel = ViewModelProvider(it, ViewModelProvider.NewInstanceFactory())[ListDataViewModel::class.java]
+            viewModel = ViewModelProvider(it, factory)[ListDataViewModel::class.java]
         }
 
         viewModel.getMovies().observe(viewLifecycleOwner, { data ->

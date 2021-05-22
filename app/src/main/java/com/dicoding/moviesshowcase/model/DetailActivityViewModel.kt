@@ -6,9 +6,7 @@ import com.dicoding.moviesshowcase.data.Data
 import com.dicoding.moviesshowcase.data.source.ItemRepository
 import com.dicoding.moviesshowcase.data.source.remote.RemoteDataSource
 
-class DetailActivityViewModel : ViewModel() {
-    private var itemRepository = ItemRepository.getInstance(remoteDataSource = RemoteDataSource.getInstance())
-
+class DetailActivityViewModel constructor(private val itemRepository: ItemRepository) : ViewModel() {
     private var mvId : Int = 0
     private var tvId : Int = 0
 
@@ -22,22 +20,4 @@ class DetailActivityViewModel : ViewModel() {
     fun setSelectedTv(tvId: Int) {
         this.tvId = tvId
     }
-/*
-    fun getMvById(): Data {
-        lateinit var result: Data
-        val listMovie = getMovies()
-        return  result
-    }
-
-    fun getTvById(): Data {
-        lateinit var result: Data
-        val listTvShow = getTvs()
-        for (tv in listTvShow) {
-            if (tv.id == tvId) {
-                result = tv
-                break
-            }
-        }
-        return result
-    }*/
 }

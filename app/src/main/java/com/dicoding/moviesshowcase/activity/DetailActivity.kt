@@ -8,6 +8,7 @@ import com.dicoding.moviesshowcase.R
 import com.dicoding.moviesshowcase.databinding.ActivityDetailBinding
 import com.dicoding.moviesshowcase.data.Data
 import com.dicoding.moviesshowcase.model.DetailActivityViewModel
+import com.dicoding.moviesshowcase.model.ViewModelFactory
 import com.dicoding.moviesshowcase.repo.Helper.TYPE_MV
 import com.dicoding.moviesshowcase.repo.Helper.TYPE_TV
 import kotlinx.android.synthetic.main.activity_detail.*
@@ -31,7 +32,8 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun getData(){
-        val viewModel = ViewModelProvider(this@DetailActivity, ViewModelProvider.NewInstanceFactory())[DetailActivityViewModel::class.java]
+        val factory = ViewModelFactory.getInstance(this)
+        val viewModel = ViewModelProvider(this@DetailActivity, factory)[DetailActivityViewModel::class.java]
 
         val id = intent.getIntExtra(EXTRA_ID, 0)
         val type = intent.getStringExtra(EXTRA_TYPE)

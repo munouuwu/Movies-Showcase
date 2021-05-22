@@ -1,9 +1,5 @@
 package com.dicoding.moviesshowcase.data.source.remote.response
 
-import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
-
-@Parcelize
 data class TvResponse (
     var id: Int,
     var name: String,
@@ -15,4 +11,4 @@ data class TvResponse (
     var original_language: String,
     var vote_average: Double,
     var poster_path: String
-) : Parcelable
+)

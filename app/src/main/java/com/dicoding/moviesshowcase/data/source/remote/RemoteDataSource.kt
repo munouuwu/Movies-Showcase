@@ -18,60 +18,60 @@ class RemoteDataSource {
     }
 
     suspend fun getTopRatedMv(
-        callback: LoadNowPlayingMoviesCallback
+        callback: LoadTopRatedMvCallback
     ) {
         EspressoIdlingResource.increment()
         ApiConfig.instance.getListMv().await().results?.let { listMovie ->
-            callback.onAllMoviesReceived(
+            callback.onMvListReceived(
                 listMovie
             )
             EspressoIdlingResource.decrement()
         }
     }
 
-    suspend fun getDetailMv(movieId: Int, callback: LoadMovieDetailCallback) {
+    suspend fun getDetailMv(movieId: Int, callback: LoadDetailMvCallback) {
         EspressoIdlingResource.increment()
         ApiConfig.instance.getDetailMv(movieId).await().let { movie ->
-            callback.onMovieDetailReceived(
+            callback.onMvDetailReceived(
                 movie
             )
             EspressoIdlingResource.decrement()
         }
     }
 
-    suspend fun getTopRatedTv(callback: LoadOnTheAirTvShowCallback) {
+    suspend fun getTopRatedTv(callback: LoadTopRatedTvCallback) {
         EspressoIdlingResource.increment()
         ApiConfig.instance.getListTv().await().results?.let { listTvShow ->
-            callback.onAllTvShowsReceived(
+            callback.onTvListReceived(
                 listTvShow
             )
             EspressoIdlingResource.decrement()
         }
     }
 
-    suspend fun getDetailTv(tvShowId: Int, callback: LoadTvShowDetailCallback) {
+    suspend fun getDetailTv(tvShowId: Int, callback: LoadDetailTvCallback) {
         EspressoIdlingResource.increment()
         ApiConfig.instance.getDetailTv(tvShowId).await().let { tvShow ->
-            callback.onTvShowDetailReceived(
+            callback.onTvDetailReceived(
                 tvShow
             )
             EspressoIdlingResource.decrement()
         }
     }
 
-    interface LoadNowPlayingMoviesCallback {
-        fun onAllMoviesReceived(response: List<MvResponse>)
+    interface LoadTopRatedMvCallback {
+        fun onMvListReceived(response: List<MvResponse>)
     }
 
-    interface LoadMovieDetailCallback {
-        fun onMovieDetailReceived(response: MvResponse)
+    interface LoadDetailMvCallback {
+        fun onMvDetailReceived(response: MvResponse)
     }
 
-    interface LoadOnTheAirTvShowCallback {
-        fun onAllTvShowsReceived(response: List<TvResponse>)
+    interface LoadTopRatedTvCallback {
+        fun onTvListReceived(response: List<TvResponse>)
     }
 
-    interface LoadTvShowDetailCallback {
-        fun onTvShowDetailReceived(response: TvResponse)
+    interface LoadDetailTvCallback {
+        fun onTvDetailReceived(response: TvResponse)
     }
 }
