@@ -42,7 +42,7 @@ class MainActivityTest : TestCase(){
         Espresso.onView(withId(R.id.rv_mv))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
         Espresso.onView(withId(R.id.rv_mv))
-            .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(5))
+            .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(10))
     }
 
     @Test
@@ -65,6 +65,8 @@ class MainActivityTest : TestCase(){
         Espresso.onView(withId(R.id.tv_rating)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
 
         Espresso.onView(withId(R.id.bg_top)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+
+        Espresso.onView(withId(R.id.detail_poster)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
     }
 
     @Test
@@ -74,7 +76,7 @@ class MainActivityTest : TestCase(){
         Espresso.onView(withId(R.id.rv_tv))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
         Espresso.onView(withId(R.id.rv_tv))
-            .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(5))
+            .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(10))
     }
 
     @Test
@@ -99,5 +101,7 @@ class MainActivityTest : TestCase(){
         Espresso.onView(withId(R.id.tv_rating)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
 
         Espresso.onView(withId(R.id.bg_top)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+
+        Espresso.onView(withId(R.id.detail_poster)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
     }
 }
