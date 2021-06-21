@@ -1,12 +1,12 @@
-package com.dicoding.moviesshowcase.adapter
+package com.dicoding.moviesshowcase.ui.adapter
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.dicoding.moviesshowcase.fragment.MoviesFragment
-import com.dicoding.moviesshowcase.fragment.TvShowFragment
+import com.dicoding.moviesshowcase.ui.fragment.MoviesFragment
+import com.dicoding.moviesshowcase.ui.fragment.TvShowFragment
 
-class SectionsPagerAdapter (activity: AppCompatActivity) : FragmentStateAdapter(activity) {
+class MainSectionsPagerAdapter (activity: AppCompatActivity) : FragmentStateAdapter(activity) {
     override fun getItemCount(): Int {
         return 2
     }

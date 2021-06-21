@@ -1,4 +1,4 @@
-package com.dicoding.moviesshowcase.fragment
+package com.dicoding.moviesshowcase.ui.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,22 +9,25 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.dicoding.moviesshowcase.R
-import com.dicoding.moviesshowcase.activity.DetailActivity
-import com.dicoding.moviesshowcase.adapter.ListDataAdapter
-import com.dicoding.moviesshowcase.data.Data
+import com.dicoding.moviesshowcase.data.source.local.entity.TvEntity
 import com.dicoding.moviesshowcase.model.ListDataViewModel
 import com.dicoding.moviesshowcase.model.ViewModelFactory
-import com.dicoding.moviesshowcase.repo.Helper.TYPE_TV
+import com.dicoding.moviesshowcase.ui.activity.DetailActivity
+import com.dicoding.moviesshowcase.ui.adapter.ListMovieAdapter
+import com.dicoding.moviesshowcase.ui.adapter.ListTvShowAdapter
+import com.dicoding.moviesshowcase.utils.Helper
+import kotlinx.android.synthetic.main.fragment_movies.*
+import kotlinx.android.synthetic.main.fragment_movies.rv_mv
 import kotlinx.android.synthetic.main.fragment_tv_show.*
 
-class TvShowFragment : Fragment() {
+class FavTvFragment : Fragment() {
     private lateinit var viewModel: ListDataViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_tv_show, container, false)
+        return inflater.inflate(R.layout.fragment_fav_tv, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -36,27 +39,30 @@ class TvShowFragment : Fragment() {
             viewModel = ViewModelProvider(it, factory)[ListDataViewModel::class.java]
         }
 
-        viewModel.getTvs().observe(viewLifecycleOwner, { data ->
-            showRecyclerList(data)
+        viewModel.getFavoriteTv().observe(viewLifecycleOwner, { data ->
+            val listTvShowAdapter = ListTvShowAdapter()
+            listTvShowAdapter.submitList(data)
+            listTvShowAdapter.notifyDataSetChanged()
+
+            showRecyclerList(listTvShowAdapter)
         })
     }
 
-    private fun showRecyclerList(list: List<Data>) {
+    private fun showRecyclerList(listTvShowAdapter: ListTvShowAdapter) {
         rv_tv.layoutManager = GridLayoutManager(context, 2)
-        val listDataAdapter = ListDataAdapter(list)
-        rv_tv.adapter = listDataAdapter
+        rv_tv.adapter = listTvShowAdapter
 
-        listDataAdapter.setOnItemClickCallback(object : ListDataAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: Data) {
+        listTvShowAdapter.setOnItemClickCallback(object : ListTvShowAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: TvEntity) {
                 showSelectedInfo(data)
             }
         })
     }
 
-    private fun showSelectedInfo(data: Data) {
+    private fun showSelectedInfo(data: TvEntity) {
         val detailActivity = Intent(context, DetailActivity::class.java)
         detailActivity.putExtra(DetailActivity.EXTRA_ID, data.id)
-        detailActivity.putExtra(DetailActivity.EXTRA_TYPE, TYPE_TV)
+        detailActivity.putExtra(DetailActivity.EXTRA_TYPE, Helper.TYPE_TV)
         startActivity(detailActivity)
     }
 }

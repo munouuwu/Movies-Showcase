@@ -3,10 +3,13 @@ package com.dicoding.moviesshowcase.model
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.dicoding.moviesshowcase.data.Data
+import androidx.paging.PagedList
 import com.dicoding.moviesshowcase.data.source.ItemRepository
-import com.dicoding.moviesshowcase.repo.DataMovies
+import com.dicoding.moviesshowcase.data.source.local.entity.MvEntity
+import com.dicoding.moviesshowcase.data.source.local.entity.TvEntity
+import com.dicoding.moviesshowcase.vo.Resource
 import junit.framework.TestCase
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -14,14 +17,10 @@ import org.junit.rules.TestRule
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
-import org.mockito.Mockito.verify
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
 class ListDataViewModelTest : TestCase() {
-    private val mvDummy = DataMovies.listDataDummyMovies()
-    private val tvDummy = DataMovies.listDataDummyTvs()
-
     private lateinit var viewModel: ListDataViewModel
 
     @get:Rule
@@ -31,44 +30,95 @@ class ListDataViewModelTest : TestCase() {
     private lateinit var itemRepository: ItemRepository
 
     @Mock
-    private lateinit var observer: Observer<List<Data>>
+    private lateinit var mvObserver: Observer<Resource<PagedList<MvEntity>>>
+
+    @Mock
+    private lateinit var tvObserver: Observer<Resource<PagedList<TvEntity>>>
+
+    @Mock
+    private lateinit var mvFavObserver: Observer<PagedList<MvEntity>>
+
+    @Mock
+    private lateinit var tvFavObserver: Observer<PagedList<TvEntity>>
+
+
+    @Mock
+    private lateinit var mvPagedList: PagedList<MvEntity>
+
+    @Mock
+    private lateinit var tvPagedList: PagedList<TvEntity>
 
     @Before
-    override public fun setUp() {
+    public override fun setUp() {
         viewModel = ListDataViewModel(itemRepository)
     }
 
     @Test
-    fun testGetTopRatedMv() {
-        val movie = MutableLiveData<List<Data>>()
-        movie.value = mvDummy
+    fun testGetMovies() {
+        val dummyMv = Resource.success(mvPagedList)
+        `when`(dummyMv.data?.size).thenReturn(10)
+        val mvs = MutableLiveData<Resource<PagedList<MvEntity>>>()
+        mvs.value = dummyMv
 
-        `when`(itemRepository.getTopRatedMv()).thenReturn(movie)
+        `when`(itemRepository.getTopRatedMv()).thenReturn(mvs)
+        val mvEntities = viewModel.getMovies().value?.data
+        com.nhaarman.mockitokotlin2.verify(itemRepository).getTopRatedMv()
+        Assert.assertNotNull(mvEntities)
+        Assert.assertEquals(10, mvEntities?.size)
 
-        val dataListMovie = viewModel.getMovies().value
-
-        verify(itemRepository).getTopRatedMv()
-        assertNotNull(dataListMovie)
-        assertEquals(10, dataListMovie?.size)
-
-        viewModel.getMovies().observeForever(observer)
-        verify(observer).onChanged(mvDummy)
+        viewModel.getMovies().observeForever(mvObserver)
+        com.nhaarman.mockitokotlin2.verify(mvObserver).onChanged(dummyMv)
     }
 
     @Test
-    fun testGetTopRatedTv() {
-        val tvShow = MutableLiveData<List<Data>>()
-        tvShow.value = tvDummy
+    fun testGetTvs() {
+        val dummyTv = Resource.success(tvPagedList)
+        `when`(dummyTv.data?.size).thenReturn(10)
+        val tvs = MutableLiveData<Resource<PagedList<TvEntity>>>()
+        tvs.value = dummyTv
 
-        `when`(itemRepository.getTopRatedTv()).thenReturn(tvShow)
+        `when`(itemRepository.getTopRatedTv()).thenReturn(tvs)
+        val tvEntities = viewModel.getTvs().value?.data
+        com.nhaarman.mockitokotlin2.verify(itemRepository).getTopRatedTv()
+        Assert.assertNotNull(tvEntities)
+        Assert.assertEquals(10, tvEntities?.size)
 
-        val dataListTvShow = viewModel.getTvs().value
+        viewModel.getTvs().observeForever(tvObserver)
+        com.nhaarman.mockitokotlin2.verify(tvObserver).onChanged(dummyTv)
+    }
 
-        verify(itemRepository).getTopRatedTv()
-        assertNotNull(dataListTvShow)
-        assertEquals(10, dataListTvShow?.size)
+    @Test
+    fun testGetFavoriteMv() {
+        val dummyMv = mvPagedList
+        `when`(dummyMv.size).thenReturn(10)
+        val mv = MutableLiveData<PagedList<MvEntity>>()
+        mv.value = dummyMv
 
-        viewModel.getTvs().observeForever(observer)
-        verify(observer).onChanged(tvDummy)
+        `when`(itemRepository.getFavoriteMv()).thenReturn(mv)
+        val mvEntities = viewModel.getFavoriteMv().value
+        com.nhaarman.mockitokotlin2.verify(itemRepository).getFavoriteMv()
+        Assert.assertNotNull(mvEntities)
+        Assert.assertEquals(10, mvEntities?.size)
+
+        viewModel.getFavoriteMv().observeForever(mvFavObserver)
+        com.nhaarman.mockitokotlin2.verify(mvFavObserver).onChanged(dummyMv)
+    }
+
+    @Test
+    fun testGetFavoriteTv() {
+        val dummyTv = tvPagedList
+        `when`(dummyTv.size).thenReturn(10)
+        val tv = MutableLiveData<PagedList<TvEntity>>()
+        tv.value = dummyTv
+
+        `when`(itemRepository.getFavoriteTv()).thenReturn(tv)
+        val tvEntities = viewModel.getFavoriteTv().value
+        com.nhaarman.mockitokotlin2.verify(itemRepository).getFavoriteTv()
+        Assert.assertNotNull(tvEntities)
+        Assert.assertEquals(10, tvEntities?.size)
+
+        viewModel.getFavoriteTv().observeForever(tvFavObserver)
+        com.nhaarman.mockitokotlin2.verify(tvFavObserver).onChanged(dummyTv)
+
     }
 }

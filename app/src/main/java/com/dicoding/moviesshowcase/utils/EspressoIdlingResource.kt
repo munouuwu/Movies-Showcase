@@ -1,6 +1,5 @@
-package com.dicoding.moviesshowcase.repo
+package com.dicoding.moviesshowcase.utils
 
-import androidx.test.espresso.IdlingResource
 import androidx.test.espresso.idling.CountingIdlingResource
 
 object EspressoIdlingResource {

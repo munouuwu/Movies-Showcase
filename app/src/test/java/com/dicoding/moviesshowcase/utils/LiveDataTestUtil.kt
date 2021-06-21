@@ -1,8 +1,7 @@
-package com.dicoding.moviesshowcase.model
+package com.dicoding.moviesshowcase.utils
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import junit.framework.TestCase
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 

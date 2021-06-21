@@ -1,4 +1,4 @@
-package com.dicoding.moviesshowcase.repo
+package com.dicoding.moviesshowcase.utils
 
 object Helper {
     const val TYPE_MV = "TYPE_MV"

@@ -1,6 +1,7 @@
 package com.dicoding.moviesshowcase.repo
 
-import com.dicoding.moviesshowcase.data.Data
+import com.dicoding.moviesshowcase.data.source.local.entity.MvEntity
+import com.dicoding.moviesshowcase.data.source.local.entity.TvEntity
 import com.dicoding.moviesshowcase.data.source.remote.response.GenreResponse
 import com.dicoding.moviesshowcase.data.source.remote.response.MvResponse
 import com.dicoding.moviesshowcase.data.source.remote.response.TvResponse
@@ -314,332 +315,342 @@ object DataMovies {
         return list
     }
 
-    fun listDataDummyMovies(): List<Data> {
-        val list = ArrayList<Data>()
+    fun listDataDummyMovies(): List<MvEntity> {
+        val list = ArrayList<MvEntity>()
 
         list.add(
-            Data(
+            MvEntity(
+                1,
                 1,
                 "Alita: Battle Angel",
                 "When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.",
-                "Action",
                 "02/14/2019",
                 200,
+                "Action",
                 "en",
                 72.0,
-                null,
-                null,
-                "xRWht48C2V8XNfzvPehyClOvDni.jpg"
+                "xRWht48C2V8XNfzvPehyClOvDni.jpg",
+                true
             )
         )
 
         list.add(
-            Data(
+            MvEntity(
+                2,
                 2,
                 "Alita: Battle Angel",
                 "When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.",
-                "Action",
                 "02/14/2019",
                 200,
+                "Action",
                 "en",
                 72.0,
-                null,
-                null,
-                "xRWht48C2V8XNfzvPehyClOvDni.jpg"
+                "xRWht48C2V8XNfzvPehyClOvDni.jpg",
+                true
             )
         )
 
         list.add(
-            Data(
+            MvEntity(
+                3,
                 3,
                 "Alita: Battle Angel",
                 "When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.",
-                "Action",
                 "02/14/2019",
                 200,
+                "Action",
                 "en",
                 72.0,
-                null,
-                null,
-                "xRWht48C2V8XNfzvPehyClOvDni.jpg"
+                "xRWht48C2V8XNfzvPehyClOvDni.jpg",
+                true
             )
         )
 
         list.add(
-            Data(
+            MvEntity(
+                4,
                 4,
                 "Alita: Battle Angel",
                 "When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.",
-                "Action",
                 "02/14/2019",
                 200,
+                "Action",
                 "en",
                 72.0,
-                null,
-                null,
-                "xRWht48C2V8XNfzvPehyClOvDni.jpg"
+                "xRWht48C2V8XNfzvPehyClOvDni.jpg",
+                false
             )
         )
 
         list.add(
-            Data(
+            MvEntity(
+                5,
                 5,
                 "Alita: Battle Angel",
                 "When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.",
-                "Action",
                 "02/14/2019",
                 200,
+                "Action",
                 "en",
                 72.0,
-                null,
-                null,
-                "xRWht48C2V8XNfzvPehyClOvDni.jpg"
+                "xRWht48C2V8XNfzvPehyClOvDni.jpg",
+                false
             )
         )
 
         list.add(
-            Data(
+            MvEntity(
+                6,
                 6,
                 "Alita: Battle Angel",
                 "When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.",
-                "Action",
                 "02/14/2019",
                 200,
+                "Action",
                 "en",
                 72.0,
-                null,
-                null,
-                "xRWht48C2V8XNfzvPehyClOvDni.jpg"
+                "xRWht48C2V8XNfzvPehyClOvDni.jpg",
+                false
             )
         )
 
         list.add(
-            Data(
+            MvEntity(
+                7,
                 7,
                 "Alita: Battle Angel",
                 "When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.",
-                "Action",
                 "02/14/2019",
                 200,
+                "Action",
                 "en",
                 72.0,
-                null,
-                null,
-                "xRWht48C2V8XNfzvPehyClOvDni.jpg"
+                "xRWht48C2V8XNfzvPehyClOvDni.jpg",
+                false
             )
         )
 
         list.add(
-            Data(
+            MvEntity(
+                8,
                 8,
                 "Alita: Battle Angel",
                 "When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.",
-                "Action",
                 "02/14/2019",
                 200,
+                "Action",
                 "en",
                 72.0,
-                null,
-                null,
-                "xRWht48C2V8XNfzvPehyClOvDni.jpg"
+                "xRWht48C2V8XNfzvPehyClOvDni.jpg",
+                false
             )
         )
 
         list.add(
-            Data(
+            MvEntity(
+                9,
                 9,
                 "Alita: Battle Angel",
                 "When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.",
-                "Action",
                 "02/14/2019",
                 200,
+                "Action",
                 "en",
                 72.0,
-                null,
-                null,
-                "xRWht48C2V8XNfzvPehyClOvDni.jpg"
+                "xRWht48C2V8XNfzvPehyClOvDni.jpg",
+                false
             )
         )
 
         list.add(
-            Data(
+            MvEntity(
+                10,
                 10,
                 "Alita: Battle Angel",
                 "When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.",
-                "Action",
                 "02/14/2019",
                 200,
+                "Action",
                 "en",
                 72.0,
-                null,
-                null,
-                "xRWht48C2V8XNfzvPehyClOvDni.jpg"
+                "xRWht48C2V8XNfzvPehyClOvDni.jpg",
+                false
             )
         )
 
         return list
     }
 
-    fun listDataDummyTvs(): List<Data> {
-        val list = ArrayList<Data>()
+    fun listDataDummyTvs(): List<TvEntity> {
+        val list = ArrayList<TvEntity>()
 
         list.add(
-            Data(
+            TvEntity(
+                1,
                 1,
                 "Arrow",
                 "Spoiled billionaire playboy Oliver Queen is missing and presumed dead when his yacht is lost at sea. He returns five years later a changed man, determined to clean up the city as a hooded vigilante armed with a bow.",
-                "Action",
                 "10/10/2012",
-                null,
-                "en",
-                70.0,
+                "Action",
                 100,
                 3,
-                "elbLQbocvW9vwrHRjYTSjXr5BX5.jpg"
+                "en",
+                70.0,
+                "elbLQbocvW9vwrHRjYTSjXr5BX5.jpg",
+                true
             )
         )
 
         list.add(
-            Data(
+            TvEntity(
+                2,
                 2,
                 "Arrow",
                 "Spoiled billionaire playboy Oliver Queen is missing and presumed dead when his yacht is lost at sea. He returns five years later a changed man, determined to clean up the city as a hooded vigilante armed with a bow.",
-                "Action",
                 "10/10/2012",
-                null,
-                "en",
-                70.0,
+                "Action",
                 100,
                 3,
-                "elbLQbocvW9vwrHRjYTSjXr5BX5.jpg"
+                "en",
+                70.0,
+                "elbLQbocvW9vwrHRjYTSjXr5BX5.jpg",
+                true
             )
         )
 
         list.add(
-            Data(
+            TvEntity(
+                3,
                 3,
                 "Arrow",
                 "Spoiled billionaire playboy Oliver Queen is missing and presumed dead when his yacht is lost at sea. He returns five years later a changed man, determined to clean up the city as a hooded vigilante armed with a bow.",
-                "Action",
                 "10/10/2012",
-                null,
-                "en",
-                70.0,
+                "Action",
                 100,
                 3,
-                "elbLQbocvW9vwrHRjYTSjXr5BX5.jpg"
+                "en",
+                70.0,
+                "elbLQbocvW9vwrHRjYTSjXr5BX5.jpg",
+                true
             )
         )
 
         list.add(
-            Data(
+            TvEntity(
+                4,
                 4,
                 "Arrow",
                 "Spoiled billionaire playboy Oliver Queen is missing and presumed dead when his yacht is lost at sea. He returns five years later a changed man, determined to clean up the city as a hooded vigilante armed with a bow.",
-                "Action",
                 "10/10/2012",
-                null,
-                "en",
-                70.0,
+                "Action",
                 100,
                 3,
-                "elbLQbocvW9vwrHRjYTSjXr5BX5.jpg"
+                "en",
+                70.0,
+                "elbLQbocvW9vwrHRjYTSjXr5BX5.jpg",
+                false
             )
         )
 
         list.add(
-            Data(
+            TvEntity(
+                5,
                 5,
                 "Arrow",
                 "Spoiled billionaire playboy Oliver Queen is missing and presumed dead when his yacht is lost at sea. He returns five years later a changed man, determined to clean up the city as a hooded vigilante armed with a bow.",
-                "Action",
                 "10/10/2012",
-                null,
-                "en",
-                70.0,
+                "Action",
                 100,
                 3,
-                "elbLQbocvW9vwrHRjYTSjXr5BX5.jpg"
+                "en",
+                70.0,
+                "elbLQbocvW9vwrHRjYTSjXr5BX5.jpg",
+                false
             )
         )
 
         list.add(
-            Data(
+            TvEntity(
+                6,
                 6,
                 "Arrow",
                 "Spoiled billionaire playboy Oliver Queen is missing and presumed dead when his yacht is lost at sea. He returns five years later a changed man, determined to clean up the city as a hooded vigilante armed with a bow.",
-                "Action",
                 "10/10/2012",
-                null,
-                "en",
-                70.0,
+                "Action",
                 100,
                 3,
-                "elbLQbocvW9vwrHRjYTSjXr5BX5.jpg"
+                "en",
+                70.0,
+                "elbLQbocvW9vwrHRjYTSjXr5BX5.jpg",
+                false
             )
         )
 
         list.add(
-            Data(
+            TvEntity(
+                7,
                 7,
                 "Arrow",
                 "Spoiled billionaire playboy Oliver Queen is missing and presumed dead when his yacht is lost at sea. He returns five years later a changed man, determined to clean up the city as a hooded vigilante armed with a bow.",
-                "Action",
                 "10/10/2012",
-                null,
-                "en",
-                70.0,
+                "Action",
                 100,
                 3,
-                "elbLQbocvW9vwrHRjYTSjXr5BX5.jpg"
+                "en",
+                70.0,
+                "elbLQbocvW9vwrHRjYTSjXr5BX5.jpg",
+                false
             )
         )
 
         list.add(
-            Data(
+            TvEntity(
+                8,
                 8,
                 "Arrow",
                 "Spoiled billionaire playboy Oliver Queen is missing and presumed dead when his yacht is lost at sea. He returns five years later a changed man, determined to clean up the city as a hooded vigilante armed with a bow.",
-                "Action",
                 "10/10/2012",
-                null,
-                "en",
-                70.0,
+                "Action",
                 100,
                 3,
-                "elbLQbocvW9vwrHRjYTSjXr5BX5.jpg"
+                "en",
+                70.0,
+                "elbLQbocvW9vwrHRjYTSjXr5BX5.jpg",
+                false
             )
         )
 
         list.add(
-            Data(
+            TvEntity(
+                9,
                 9,
                 "Arrow",
                 "Spoiled billionaire playboy Oliver Queen is missing and presumed dead when his yacht is lost at sea. He returns five years later a changed man, determined to clean up the city as a hooded vigilante armed with a bow.",
-                "Action",
                 "10/10/2012",
-                null,
-                "en",
-                70.0,
+                "Action",
                 100,
                 3,
-                "elbLQbocvW9vwrHRjYTSjXr5BX5.jpg"
+                "en",
+                70.0,
+                "elbLQbocvW9vwrHRjYTSjXr5BX5.jpg",
+                false
             )
         )
 
         list.add(
-            Data(
+            TvEntity(
+                10,
                 10,
                 "Arrow",
                 "Spoiled billionaire playboy Oliver Queen is missing and presumed dead when his yacht is lost at sea. He returns five years later a changed man, determined to clean up the city as a hooded vigilante armed with a bow.",
-                "Action",
                 "10/10/2012",
-                null,
-                "en",
-                70.0,
+                "Action",
                 100,
                 3,
-                "elbLQbocvW9vwrHRjYTSjXr5BX5.jpg"
+                "en",
+                70.0,
+                "elbLQbocvW9vwrHRjYTSjXr5BX5.jpg",
+                false
             )
         )
 

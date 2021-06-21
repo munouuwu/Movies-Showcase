@@ -1,13 +1,21 @@
 package com.dicoding.moviesshowcase.data.source.remote.api
 
-import com.dicoding.moviesshowcase.repo.Helper
+import com.dicoding.moviesshowcase.utils.Helper
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
-    private val httpClient = OkHttpClient.Builder().apply {
-    }.build()
+    private val interceptor = HttpLoggingInterceptor()
+        .apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
+
+    private val httpClient = OkHttpClient.Builder()
+        .apply {
+
+    }.addInterceptor(interceptor).build()
 
     private val retrofit: Retrofit.Builder by lazy {
         Retrofit.Builder().apply {

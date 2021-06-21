@@ -3,9 +3,11 @@ package com.dicoding.moviesshowcase.model
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.dicoding.moviesshowcase.data.Data
 import com.dicoding.moviesshowcase.data.source.ItemRepository
+import com.dicoding.moviesshowcase.data.source.local.entity.MvEntity
+import com.dicoding.moviesshowcase.data.source.local.entity.TvEntity
 import com.dicoding.moviesshowcase.repo.DataMovies
+import com.dicoding.moviesshowcase.vo.Resource
 import junit.framework.TestCase
 import org.junit.Before
 import org.junit.Rule
@@ -14,7 +16,6 @@ import org.junit.rules.TestRule
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
-import org.mockito.Mockito.verify
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
@@ -34,62 +35,57 @@ class DetailActivityViewModelTest : TestCase() {
     private lateinit var itemRepository: ItemRepository
 
     @Mock
-    private lateinit var observer: Observer<Data>
+    private lateinit var mvObserver: Observer<Resource<MvEntity>>
+
+    @Mock
+    private lateinit var tvObserver: Observer<Resource<TvEntity>>
 
     @Before
-    override public fun setUp() {
+    public override fun setUp() {
         viewModel = DetailActivityViewModel(itemRepository)
     }
 
     @Test
-    fun getMovieDetail() {
-        val movie = MutableLiveData<Data>()
-        movie.value = mvDummy
+    fun testGetMvById() {
+        val dummyMv= Resource.success(mvDummy)
+        val mv = MutableLiveData<Resource<MvEntity>>()
+        mv.value = dummyMv
 
-        `when`(itemRepository.getDetailMv(mvId)).thenReturn(movie)
-
-        viewModel.setSelectedMv(mvId)
-        val mvData = viewModel.getMvById().value as Data
-
-        assertNotNull(mvData)
-        assertEquals(mvDummy.id, mvData.id)
-        assertEquals(mvDummy.title, mvData.title)
-        assertEquals(mvDummy.overview, mvData.overview)
-        assertEquals(mvDummy.genre, mvData.genre)
-        assertEquals(mvDummy.duration, mvData.duration)
-        assertEquals(mvDummy.language, mvData.language)
-        assertEquals(mvDummy.rating, mvData.rating)
-        assertEquals(mvDummy.release, mvData.release)
-        assertEquals(mvDummy.imgPoster, mvData.imgPoster)
-
-        viewModel.getMvById().observeForever(observer)
-        verify(observer).onChanged(mvDummy)
-
+        `when` (mvId?.let { itemRepository.getDetailMv(it) }).thenReturn(mv)
+        if (mvId != null) {
+            viewModel.setSelectedMv(mvId)
+        }
+        viewModel.getMvById().observeForever(mvObserver)
+        com.nhaarman.mockitokotlin2.verify(mvObserver).onChanged(dummyMv)
     }
 
     @Test
-    fun getTvShowDetail() {
-        val tvShow = MutableLiveData<Data>()
-        tvShow.value = tvDummy
+    fun testGetTvById() {
+        val dummyTv= Resource.success(tvDummy)
+        val tv = MutableLiveData<Resource<TvEntity>>()
+        tv.value = dummyTv
 
-        `when`(itemRepository.getDetailTv(tvId)).thenReturn(tvShow)
+        `when` (tvId?.let { itemRepository.getDetailTv(it) }).thenReturn(tv)
+        if (tvId != null) {
+            viewModel.setSelectedTv(tvId)
+        }
+        viewModel.getTvById().observeForever(tvObserver)
+        com.nhaarman.mockitokotlin2.verify(tvObserver).onChanged(dummyTv)
+    }
 
-        viewModel.setSelectedTv(tvId)
-        val tvData = viewModel.getTvById().value as Data
+    @Test
+    fun testSetFavMv() {
+        val mvEntity = mvDummy
 
-        assertNotNull(tvData)
-        assertEquals(tvDummy.id, tvData.id)
-        assertEquals(tvDummy.title, tvData.title)
-        assertEquals(tvDummy.overview, tvData.overview)
-        assertEquals(tvDummy.genre, tvData.genre)
-        assertEquals(tvDummy.season, tvData.season)
-        assertEquals(tvDummy.episode, tvData.episode)
-        assertEquals(tvDummy.language, tvData.language)
-        assertEquals(tvDummy.rating, tvData.rating)
-        assertEquals(tvDummy.release, tvData.release)
-        assertEquals(tvDummy.imgPoster, tvData.imgPoster)
+        val newState = !mvEntity.isFavorite
+        itemRepository.setFavoriteMv(mvEntity, newState)
+    }
 
-        viewModel.getTvById().observeForever(observer)
-        verify(observer).onChanged(tvDummy)
+    @Test
+    fun testSetFavTv() {
+        val tvEntity = tvDummy
+
+        val newState = !tvEntity.isFavorite
+        itemRepository.setFavoriteTv(tvEntity, newState)
     }
 }

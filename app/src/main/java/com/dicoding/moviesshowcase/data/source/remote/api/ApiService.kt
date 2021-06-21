@@ -3,7 +3,7 @@ package com.dicoding.moviesshowcase.data.source.remote.api
 import com.dicoding.moviesshowcase.data.source.remote.response.ListResponse
 import com.dicoding.moviesshowcase.data.source.remote.response.MvResponse
 import com.dicoding.moviesshowcase.data.source.remote.response.TvResponse
-import com.dicoding.moviesshowcase.repo.Helper
+import com.dicoding.moviesshowcase.utils.Helper
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

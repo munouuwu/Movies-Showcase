@@ -11,8 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MoviesShowcase">
-        <activity android:name=".activity.DetailActivity" />
-        <activity android:name=".activity.MainActivity">
+        <activity android:name="com.dicoding.moviesshowcase.ui.activity.FavoriteActivity"></activity>
+        <activity android:name="com.dicoding.moviesshowcase.ui.activity.DetailActivity" />
+        <activity android:name="com.dicoding.moviesshowcase.ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
